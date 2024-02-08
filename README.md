@@ -59,4 +59,4 @@ func main() {
 
 **Further Information:** 
 * Refer to the unit test for detailed usage information and examples.
-* Feel free to report issues or suggest improvements on the project repository.
+* Feel free to report issues or suggest improvements on the project repository.# go-config
