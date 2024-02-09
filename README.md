@@ -12,7 +12,7 @@ This package provides functions to read and parse configuration data from variou
 ```go
 package main
 
-import config "github.com/otyang/x-config"
+import config "github.com/otyang/go-config"
 
 func main() {
 
@@ -40,8 +40,21 @@ func main() {
 
 	  // Parses configuration data from command-line flags or environment variables. 
 
-	// below a command on terminal and parsing it
-	  // ./example --database="dsn" --timeout=1s --userids john=123 mary=456 -v=true --workers=8 --custom=only-custom
+		// below a command on terminal and parsing it
+	  	// ./example --database="dsn" --timeout=1s --userids john=123 mary=456 -v=true --workers=8 --custom=only-custom
+
+		os.Args = strings.Split(s, " ")
+
+		type CLIData struct {
+			Custom   customType
+			Database string
+			Timeout  time.Duration
+			UserIDs  map[string]int
+			Verbose  bool `arg:"-v,--verbose,env:ENV_VERBOSE" default:"something" help:"verbosity level"`
+			Workers  int
+		}
+
+		var cfg CLIData
 
 		var myCConfig fileConfig
 		err := config.LoadFromCLIFlagsOrENV(&myCConfig)
