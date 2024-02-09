@@ -39,6 +39,10 @@ func main() {
 		println(mySConfig.AppName) 
 
 	  // Parses configuration data from command-line flags or environment variables. 
+
+	// below a command on terminal and parsing it
+	  // ./example --database="dsn" --timeout=1s --userids john=123 mary=456 -v=true --workers=8 --custom=only-custom
+
 		var myCConfig fileConfig
 		err := config.LoadFromCLIFlagsOrENV(&myCConfig)
 		if err != nil {
@@ -59,4 +63,4 @@ func main() {
 
 **Further Information:** 
 * Refer to the unit test for detailed usage information and examples.
-* Feel free to report issues or suggest improvements on the project repository.# go-config
+* Feel free to report issues or suggest improvements on the project repository.
